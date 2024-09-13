@@ -13,11 +13,9 @@
 .content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 300px);
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
-}
-.lab {
 }
 .image {
   width: 500px;
