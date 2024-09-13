@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.header {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+.content {
+  text-align: center;
+  margin: 10px;
+  padding: 50px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+.footer {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+.image{
+    margin: 10px;
+}
