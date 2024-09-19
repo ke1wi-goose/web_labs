@@ -77,3 +77,24 @@ footer {
   margin-bottom: 5px;
   font-size: 16px;
 }
+
+.content {
+  position: absolute;
+  left: 227px;
+  top: 189.5px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  justify-items: center;
+  row-gap: 20px;
+  padding-top: 20px;
+}
+.content > img {
+  border: #1e3c68 solid;
+  border-radius: 10px;
+  box-shadow: 10px 5px #11223c;
+}
+.content > img:hover {
+  scale: 1.1;
+}
