@@ -1,8 +1,6 @@
 window.addEventListener("load", function () {
-    const preloader = document.getElementById("preloader");
-
-    // Додаємо невелику затримку перед видаленням preloader
-    setTimeout(function () {
-      preloader.style.display = "none";
-    }, 350);
+  const preloader = document.getElementById("preloader");
+  setTimeout(function () {
+    preloader.style.display = "none";
+  }, 350);
 });

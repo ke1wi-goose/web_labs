@@ -61,7 +61,7 @@
   <main class="mt-5 pt-4">
     <div
       id="carouselExampleIndicators"
-      class="carousel slide"
+      class="carousel slide carousel-dark"
       data-bs-touch="true"
     >
       <div class="carousel-indicators">
