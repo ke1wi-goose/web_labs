@@ -2,7 +2,6 @@
   <header>
     <nav class="navbar fixed-top bg-dark navbar-expand-md" data-bs-theme="dark">
       <div class="container-fluid d-flex">
-        <!-- Центрування контейнера -->
         <a class="navbar-brand justify-content-start" href="#">
           <img
             src="../src/assets/img/logo.svg"
@@ -30,10 +29,10 @@
         >
           <ul class="navbar-nav mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#">Головна </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Посилання</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -42,14 +41,14 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                >Dropdown</a
+                >Випадаючий список</a
               >
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Дія</a></li>
+                <li><a class="dropdown-item" href="#">Інша дія</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Щось інше</a>
                 </li>
               </ul>
             </li>
