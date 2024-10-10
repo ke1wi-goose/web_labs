@@ -247,7 +247,6 @@
           </div>
           <div class="modal-body">
             <transition name="fade" mode="out-in">
-              <!-- Форма авторизації -->
               <form v-if="isLogin" @submit.prevent="handleLogin" key="login">
                 <h6>Будь ласка, авторизуйтесь:</h6>
                 <input
@@ -262,13 +261,11 @@
                   placeholder="Пароль"
                   required
                 />
-                <!-- Кнопка для сабміту форми -->
                 <button type="submit" class="btn btn-primary mt-3">
                   Авторизуватись
                 </button>
               </form>
 
-              <!-- Форма реєстрації -->
               <form v-else @submit.prevent="handleRegister" key="register">
                 <h6>Створіть новий акаунт:</h6>
                 <input
@@ -325,7 +322,6 @@
                   accept="image/png, image/jpeg"
                   required
                 />
-                <!-- Кнопка для сабміту форми -->
                 <button type="submit" class="btn btn-primary mt-3">
                   Зареєструватись
                 </button>
@@ -408,18 +404,10 @@ export default {
   },
   data() {
     return {
-      isLogin: true, // Початково відображаємо форму авторизації
+      isLogin: true,
     };
   },
   methods: {
-    handleLogin() {
-      // Логіка авторизації
-      console.log("Авторизація...");
-    },
-    handleRegister() {
-      // Логіка реєстрації
-      console.log("Реєстрація...");
-    },
     toggleForm() {
       this.isLogin = !this.isLogin;
     },
