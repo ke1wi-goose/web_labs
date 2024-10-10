@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
 import Faq from '../components/Faq.vue';
 import Admin from '../components/Admin.vue';
+import Animation from '../components/Animation.vue';
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/admin',
     name: 'Admin Panel',
     component: Admin,
+  },
+  {
+    path: '/animation',
+    name: 'Anim',
+    component: Animation,
   },
 ];
 
