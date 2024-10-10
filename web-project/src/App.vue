@@ -23,13 +23,16 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
+
         <div
           class="collapse navbar-collapse justify-content-center"
           id="navbarSupportedContent"
         >
           <ul class="navbar-nav mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Головна </a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Головна</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Посилання</a>
@@ -47,12 +50,21 @@
                 <li><a class="dropdown-item" href="#">Дія</a></li>
                 <li><a class="dropdown-item" href="#">Інша дія</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Щось інше</a>
-                </li>
+                <li><a class="dropdown-item" href="#">Щось інше</a></li>
               </ul>
             </li>
           </ul>
+        </div>
+
+        <div class="d-flex ms-auto me-5">
+          <a
+            href="#"
+            class="text-light"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModalCenter"
+          >
+            <font-awesome-icon :icon="['fas', 'user-circle']" class="fa-2x" />
+          </a>
         </div>
       </div>
     </nav>
@@ -92,6 +104,7 @@
             class="d-block w-100"
             alt="..."
             style="height: 500px; object-fit: cover"
+            loading="lazy"
           />
         </div>
         <div class="carousel-item">
@@ -100,6 +113,7 @@
             class="d-block w-100"
             alt="..."
             style="height: 500px; object-fit: cover"
+            loading="lazy"
           />
         </div>
         <div class="carousel-item">
@@ -108,6 +122,7 @@
             class="d-block w-100"
             alt="..."
             style="height: 500px; object-fit: cover"
+            loading="lazy"
           />
         </div>
       </div>
@@ -140,6 +155,7 @@
               class="card-img-top"
               alt="..."
               style="height: 200px; object-fit: cover"
+              loading="lazy"
             />
             <div class="card-body">
               <h5 class="card-title">Lorem.</h5>
@@ -164,6 +180,7 @@
               class="card-img-top"
               alt="..."
               style="height: 200px; object-fit: cover"
+              loading="lazy"
             />
             <div class="card-body">
               <h5 class="card-title">Lorem, ipsum dolor.</h5>
@@ -188,6 +205,7 @@
               class="card-img-top"
               alt="..."
               style="height: 200px; object-fit: cover"
+              loading="lazy"
             />
             <div class="card-body">
               <h5 class="card-title">Lorem, ipsum.</h5>
@@ -202,6 +220,122 @@
                 >
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">
+              {{ isLogin ? "Авторизація" : "Реєстрація" }}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <transition name="fade" mode="out-in">
+              <!-- Форма авторизації -->
+              <form v-if="isLogin" @submit.prevent="handleLogin" key="login">
+                <h6>Будь ласка, авторизуйтесь:</h6>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Електронна пошта"
+                  required
+                />
+                <input
+                  type="password"
+                  class="form-control mt-2"
+                  placeholder="Пароль"
+                  required
+                />
+                <!-- Кнопка для сабміту форми -->
+                <button type="submit" class="btn btn-primary mt-3">
+                  Авторизуватись
+                </button>
+              </form>
+
+              <!-- Форма реєстрації -->
+              <form v-else @submit.prevent="handleRegister" key="register">
+                <h6>Створіть новий акаунт:</h6>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Електронна пошта"
+                  required
+                />
+                <input
+                  type="password"
+                  class="form-control mt-2"
+                  placeholder="Пароль"
+                  required
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Ім'я"
+                  required
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="Прізвище"
+                  required
+                />
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  placeholder="По-батькові"
+                  required
+                />
+                <input
+                  type="date"
+                  class="form-control mt-2"
+                  placeholder="Дата народження"
+                  max="2006-10-11"
+                  required
+                />
+                <select class="form-control mt-2" required>
+                  <option value="">Оберіть вашу групу</option>
+                  <option value="1">Якась група 1</option>
+                  <option value="2">Якась група 2</option>
+                  <option value="2">Якась група 3</option>
+                  <option value="2">Якась група 4</option>
+                </select>
+                <label for="picture-download" class="mt-2"
+                  >Завантажте свій аватар</label
+                >
+                <input
+                  type="file"
+                  id="picture-download"
+                  class="form-control"
+                  accept="image/png, image/jpeg"
+                  required
+                />
+                <!-- Кнопка для сабміту форми -->
+                <button type="submit" class="btn btn-primary mt-3">
+                  Зареєструватись
+                </button>
+              </form>
+            </transition>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="toggleForm">
+              {{ isLogin ? "Перейти до реєстрації" : "Перейти до авторизації" }}
+            </button>
           </div>
         </div>
       </div>
@@ -248,20 +382,58 @@
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPhone,
+  faEnvelope,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faTelegramPlane,
   faWhatsapp,
   faViber,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faPhone, faEnvelope, faTelegramPlane, faWhatsapp, faViber);
+library.add(
+  faPhone,
+  faEnvelope,
+  faTelegramPlane,
+  faWhatsapp,
+  faViber,
+  faUserCircle
+);
 
 export default {
   components: {
     FontAwesomeIcon,
   },
+  data() {
+    return {
+      isLogin: true, // Початково відображаємо форму авторизації
+    };
+  },
+  methods: {
+    handleLogin() {
+      // Логіка авторизації
+      console.log("Авторизація...");
+    },
+    handleRegister() {
+      // Логіка реєстрації
+      console.log("Реєстрація...");
+    },
+    toggleForm() {
+      this.isLogin = !this.isLogin;
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
