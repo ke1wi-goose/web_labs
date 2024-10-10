@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-dark text-light py-3 mt-auto">
+  <footer class="bg-dark text-light py-3 mt-auto ">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-auto">

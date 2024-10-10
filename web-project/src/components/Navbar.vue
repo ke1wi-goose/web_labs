@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar fixed-top bg-dark navbar-expand-md" data-bs-theme="dark">
     <div class="container-fluid d-flex">
-      <a class="navbar-brand justify-content-start" href="#">
+      <a class="navbar-brand justify-content-start" href="/">
         <img src="../../src/assets/img/logo.svg" alt="Logo" width="54" />
       </a>
       <button
@@ -21,10 +21,10 @@
       >
         <ul class="navbar-nav mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Головна</a>
+            <a class="nav-link" href="/">Головна</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQ</a>
+            <a class="nav-link" href="/faq">FAQ</a>
           </li>
           <li class="nav-item d-block d-md-none">
             <a
