@@ -15,7 +15,6 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div
         class="collapse navbar-collapse justify-content-center"
         id="navbarSupportedContent"
@@ -25,7 +24,16 @@
             <a class="nav-link active" aria-current="page" href="#">Головна</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Посилання</a>
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+          <li class="nav-item d-block d-md-none">
+            <a
+              class="nav-link"
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#ModalCenter"
+              >Авторизація</a
+            >
           </li>
           <li class="nav-item dropdown">
             <a
@@ -47,7 +55,7 @@
         </ul>
       </div>
 
-      <div class="d-flex ms-auto me-5">
+      <div class="ms-auto me-5 d-none d-md-block">
         <a
           href="#"
           class="text-light"
@@ -65,13 +73,9 @@
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import {
-  faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
-library.add(
-  faUserCircle
-);
+library.add(faUserCircle);
 
 export default {
   components: {
