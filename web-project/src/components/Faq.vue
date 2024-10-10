@@ -20,11 +20,13 @@
     </div>
   </div>
   <Footerbar />
+  <Auth />
 </template>
 
 <script>
 import Footerbar from './Footerbar.vue';
 import Navbar from './Navbar.vue';
+import Auth from './Auth.vue';
 export default {
   data() {
     return {
@@ -58,7 +60,7 @@ export default {
     },
   },
   components: {
-    Navbar, Footerbar
+    Navbar, Footerbar, Auth
   }
 };
 </script>
@@ -66,17 +68,14 @@ export default {
 <style scoped>
 .accordion-button {
   background-color: #f8f9fa;
-  /* Колір фону кнопки */
 }
 
 .accordion-button:not(.collapsed) {
   color: #0d6efd;
-  /* Колір тексту для розкритих кнопок */
 }
 
 .accordion-body {
   background-color: #ffffff;
-  /* Колір фону тіла відповіді */
 }
 
 *{
