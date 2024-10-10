@@ -78,4 +78,8 @@ export default {
   background-color: #ffffff;
   /* Колір фону тіла відповіді */
 }
+
+*{
+    transition: 0.4s;
+}
 </style>
