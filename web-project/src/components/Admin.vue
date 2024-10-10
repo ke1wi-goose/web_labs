@@ -18,30 +18,16 @@
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>
-              <img
-                :src="item.photo"
-                alt="Product Image"
-                width="50"
-                height="50"
-              />
+              <img :src="item.photo" alt="Product Image" width="50" height="50" />
             </td>
             <td>
-              <button
-                class="btn btn-sm btn-primary me-2"
-                @click="viewItem(item)"
-              >
+              <button class="btn btn-sm btn-primary me-2" @click="viewItem(item)">
                 <i class="fas fa-eye"></i>
               </button>
-              <button
-                class="btn btn-sm btn-warning me-2"
-                @click="editItem(item)"
-              >
+              <button class="btn btn-sm btn-warning me-2" @click="editItem(item)">
                 <i class="fas fa-edit"></i>
               </button>
-              <button
-                class="btn btn-sm btn-danger"
-                @click="deleteItem(item.id)"
-              >
+              <button class="btn btn-sm btn-danger" @click="deleteItem(item.id)">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -53,6 +39,9 @@
 </template>
 
 <script>
+import product1_photo from '@/assets/img/product1.jpg';
+import product2_photo from '@/assets/img/product2.jpg';
+
 export default {
   name: "Admin Panel",
   data() {
@@ -62,13 +51,13 @@ export default {
           id: 1,
           name: "Клюшка для гольфу (оренда)",
           price: "500.00",
-          photo: "../assets/img/product1.jpg",
+          photo: product1_photo,
         },
         {
           id: 2,
           name: "Гольфкар (оренда)",
           price: "1000.00",
-          photo: "../assets/img/product2.jpg",
+          photo: product2_photo,
         },
       ],
     };
