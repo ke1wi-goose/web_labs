@@ -1,7 +1,8 @@
 <template>
   <Navbar />
-  <Footerbar />
+  Чат
   <Auth />
+  <Footerbar />
 </template>
 
 <script>
