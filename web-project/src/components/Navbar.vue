@@ -25,7 +25,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/chat">Чат</a></li>
-              <li><a class="dropdown-item" href="/rectengular">Прямокутник</a></li>
+              <li><a class="dropdown-item" href="/rectangle">Прямокутник</a></li>
               <li><a class="dropdown-item" href="/transliteration">Транслітерація</a></li>
             </ul>
           </li>

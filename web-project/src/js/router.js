@@ -4,8 +4,8 @@ import Faq from "../components/Faq.vue";
 import Admin from "../components/Admin.vue";
 import Animation from "../components/Animation.vue";
 import Chat from "../components/Chat.vue";
-import Rectengular from "../components/Rectengular.vue";
 import Transliteration from "../components/Transliteration.vue";
+import Rectangle from "../components/Rectangle.vue";
 
 const routes = [
   {
@@ -34,9 +34,9 @@ const routes = [
     component: Chat,
   },
   {
-    path: "/rectengular",
-    name: "Rectengular",
-    component: Rectengular,
+    path: "/rectangle",
+    name: "Rectangle",
+    component: Rectangle,
   },
   {
     path: "/transliteration",
