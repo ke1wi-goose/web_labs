@@ -9,6 +9,7 @@
   import Navbar from "./Navbar.vue";
   import Auth from "./Auth.vue";
   export default {
+    name: "Transliteration",
     methods: {
       toggle(index) {
         this.openIndex = this.openIndex === index ? null : index;
