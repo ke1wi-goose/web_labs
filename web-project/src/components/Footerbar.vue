@@ -23,11 +23,7 @@
           </a>
         </div>
         <div class="col-auto">
-          <a
-            href="viber://chat?number=%2B1234567890"
-            class="text-light"
-            target="_blank"
-          >
+          <a href="viber://chat?number=%2B1234567890" class="text-light" target="_blank">
             <font-awesome-icon :icon="['fab', 'viber']" />
           </a>
         </div>

@@ -1,22 +1,28 @@
 <template>
-  <div>
-    <Navbar />
-    <h1>Розрахунок прямокутника</h1>
+  <Navbar />
+  <div class="container mt-5 mb-5">
+    <h1 class="mb-4 text-center">Розрахунок прямокутника</h1>
 
-    <label for="length">Довжина:</label>
-    <input type="number" v-model="length" min="0" step="any" />
+    <div class="form-group">
+      <label for="length">Довжина:</label>
+      <input type="number" v-model="length" min="0" step="any" class="form-control" placeholder="Введіть довжину" />
+    </div>
 
-    <label for="width">Ширина:</label>
-    <input type="number" v-model="width" min="0" step="any" />
+    <div class="form-group mt-3">
+      <label for="width">Ширина:</label>
+      <input type="number" v-model="width" min="0" step="any" class="form-control" placeholder="Введіть ширину" />
+    </div>
 
-    <p class="result">Периметр: <span>{{ perimeter.toFixed(2) }}</span></p>
-    <p class="result">Площа: <span>{{ area.toFixed(2) }}</span></p>
-    <p class="result">Довжина діагоналі: <span>{{ diagonal.toFixed(2) }}</span></p>
+    <div class="mt-4">
+      <p class="result">Периметр: <span class="fw-bold">{{ perimeter.toFixed(2) }}</span></p>
+      <p class="result">Площа: <span class="fw-bold">{{ area.toFixed(2) }}</span></p>
+      <p class="result">Довжина діагоналі: <span class="fw-bold">{{ diagonal.toFixed(2) }}</span></p>
+    </div>
 
-    <p class="error" v-if="error">{{ error }}</p>
-    <Footerbar />
-    <Auth />
+    <p class="alert alert-danger mt-3" v-if="error">{{ error }}</p>
   </div>
+  <Footerbar />
+  <Auth />
 </template>
 
 <script>
@@ -28,8 +34,8 @@ export default {
   name: "Rectangle",
   data() {
     return {
-      length: 0,
-      width: 0,
+      length: 2,
+      width: 2,
       error: "",
     };
   },
@@ -74,17 +80,7 @@ export default {
 </script>
 
 <style scoped>
-label {
-  display: block;
-  margin-top: 10px;
-}
-input[type="number"] {
-  width: 100px;
-}
 .result {
   margin-top: 15px;
-}
-.error {
-  color: red;
 }
 </style>
