@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { fetchUsers } from '../js/api';
 import product1_photo from '@/assets/img/product1.jpg';
 import product2_photo from '@/assets/img/product2.jpg';
 
@@ -108,13 +109,12 @@ export default {
     };
   },
   methods: {
-    fetchUsers() {
-      fetch('http://0.0.0.0:8000/users')
-        .then(response => response.json())
-        .then(data => {
-          this.users = data;
-        })
-        .catch(error => console.error('Error fetching users:', error));
+    async fetchUsers() {
+      try {
+        this.users = await fetchUsers();
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
     },
     viewItem(item) {
       alert(`Перегляд елемента: ${item.name}`);

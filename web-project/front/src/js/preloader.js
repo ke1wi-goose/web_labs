@@ -1,6 +1,12 @@
-window.addEventListener("load", function () {
+function hidePreloader() {
   const preloader = document.getElementById("preloader");
-  setTimeout(function () {
-    preloader.style.display = "none";
-  }, 350);
-});
+  preloader.classList.add("hidden");
+
+  setTimeout(() => {
+    preloader.remove();
+  }, 500);
+}
+
+window.onload = () => {
+  hidePreloader();
+};

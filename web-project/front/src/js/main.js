@@ -1,8 +1,11 @@
 import { createApp } from "vue";
-import "../scss/styles.scss";
 import App from "../App.vue";
-import "../scss/styles.scss";
+import "../scss/style.scss";
 import * as bootstrap from "bootstrap";
 import router from "./router";
+import { MaskInput } from "vue-3-mask";
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+app.use(router);
+app.component("MaskInput", MaskInput);
+app.mount("#app");

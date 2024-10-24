@@ -24,8 +24,8 @@
               <input type="text" v-model="surname" class="form-control mt-2" placeholder="Прізвище" required />
               <input type="text" v-model="middlename" class="form-control mt-2" placeholder="По-батькові" required />
               <input type="date" v-model="birthdate" class="form-control mt-2" placeholder="Дата народження" required />
-              <input type="text" v-model="number" class="form-control mt-2" placeholder="+38(0__) -___-__-__"
-                required />
+              <MaskInput v-model="number" class="form-control mt-2" mask="38(###)-###-##-##"
+                placeholder="38(___)-___-__-__" required />
               <div class="mt-2">
                 <label>Стать:</label>
                 <input class="m-1" type="radio" id="male" value="Male" v-model="gender" required />
@@ -55,7 +55,11 @@
 </template>
 
 <script>
+import { MaskInput } from 'vue-3-mask';
 export default {
+  components: {
+    MaskInput,
+  },
   data() {
     return {
       isLogin: true,
@@ -78,16 +82,16 @@ export default {
       this.isLogin = !this.isLogin;
     },
     resetForm() {
-      this.email = '',
-        this.password = '',
-        this.name = '',
-        this.surname = '',
-        this.middlename = '',
-        this.birthdate = '',
-        this.number = '',
-        this.gender = '',
-        this.phone = '',
-        this.group = ''
+      this.email = '';
+      this.password = '';
+      this.name = '';
+      this.surname = '';
+      this.middlename = '';
+      this.birthdate = '';
+      this.number = '';
+      this.gender = '';
+      this.phone = '';
+      this.group = '';
     },
     async handleRegister() {
       console.log({
@@ -101,6 +105,7 @@ export default {
         number: this.number,
         group: this.group,
       });
+
       const userData = {
         email: this.email,
         name: this.name,
@@ -123,32 +128,20 @@ export default {
         });
 
         if (!response.ok) {
-          alert(`Упсі... Щось не так`)
+          alert('Упсі... Щось не так');
           throw new Error('Failed to register user');
         }
-        
+
         const result = await response.json();
         console.log('User registered successfully:', result);
-        alert(`Вітаю ${this.name}. Ви успішно зареєстровані!`)
+        alert(`Вітаю ${this.name}. Ви успішно зареєстровані!`);
       } catch (error) {
         console.error('Error registering user:', error);
-        alert("Підніми базу... Розробник...")
+        alert('Підніми базу... Розробник...');
       }
 
       this.resetForm();
-    }
-  },
-
-  selectAll(event) {
-    this.selectedUsers = event.target.checked ? this.registeredUsers.map((_, index) => index) : [];
-  },
-  deleteSelected() {
-    this.registeredUsers = this.registeredUsers.filter((_, index) => !this.selectedUsers.includes(index));
-    this.selectedUsers = [];
-  },
-  duplicateSelected() {
-    const usersToDuplicate = this.registeredUsers.filter((_, index) => this.selectedUsers.includes(index));
-    this.registeredUsers.push(...usersToDuplicate);
+    },
   }
 }
 </script>

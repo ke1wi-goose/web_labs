@@ -18,12 +18,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 1;
+        transition: opacity 0.5s ease, visibility 0s 0.5s;
+        visibility: visible;
       }
+
+      #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
       .spinner {
         width: 75px;
         aspect-ratio: 1;
         display: grid;
       }
+
       .spinner:before,
       .spinner:after {
         content: "";
@@ -34,11 +44,13 @@
         filter: drop-shadow(40px 40px 0 #000000);
         animation: loading 2s infinite alternate;
       }
+
       .spinner:after {
         margin: 0 0 0 auto;
         filter: drop-shadow(-40px 40px 0 #000000);
         animation-delay: -1s;
       }
+
       @keyframes loading {
         0%,
         10% {
@@ -64,5 +76,9 @@
     <div id="app"></div>
     <script src="/src/js/preloader.js"></script>
     <script type="module" loading="lazy" src="/src/js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.19/inputmask.min.js"
+      loading="lazy"
+    ></script>
   </body>
 </html>
