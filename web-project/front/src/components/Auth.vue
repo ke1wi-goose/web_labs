@@ -18,28 +18,64 @@
 
             <form v-else @submit.prevent="handleRegister" key="register">
               <h6>Створіть новий акаунт:</h6>
-              <input type="email" v-model="email" class="form-control" placeholder="Електронна пошта" required />
-              <input type="password" v-model="password" class="form-control mt-2" placeholder="Пароль" required />
-              <input type="text" v-model="name" class="form-control mt-2" placeholder="Ім'я" required />
-              <input type="text" v-model="surname" class="form-control mt-2" placeholder="Прізвище" required />
-              <input type="text" v-model="middlename" class="form-control mt-2" placeholder="По-батькові" required />
-              <input type="date" v-model="birthdate" class="form-control mt-2" placeholder="Дата народження" required />
-              <MaskInput v-model="number" class="form-control mt-2" mask="38(###)-###-##-##"
-                placeholder="38(___)-___-__-__" required />
+
+              <Field name="email" type="email" v-slot="{ field, meta }">
+                <input v-bind="field" class="form-control" placeholder="Електронна пошта" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="password" v-slot="{ field, meta }">
+                <input v-bind="field" type="password" class="form-control mt-2" placeholder="Пароль" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="name" v-slot="{ field, meta }">
+                <input v-bind="field" class="form-control mt-2" placeholder="Ім'я" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="surname" v-slot="{ field, meta }">
+                <input v-bind="field" class="form-control mt-2" placeholder="Прізвище" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="middlename" v-slot="{ field, meta }">
+                <input v-bind="field" class="form-control mt-2" placeholder="По-батькові" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="birthdate" v-slot="{ field, meta }">
+                <input v-bind="field" type="date" class="form-control mt-2" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
+              <Field name="number" v-slot="{ field, meta }">
+                <MaskInput v-bind="field" class="form-control mt-2" mask="38(###)-###-##-##"
+                  placeholder="38(___)-___-__-__" />
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
               <div class="mt-2">
                 <label>Стать:</label>
-                <input class="m-1" type="radio" id="male" value="Male" v-model="gender" required />
-                <label for="male">Чоловіча</label>
-                <input class="m-1" type="radio" id="female" value="Female" v-model="gender" required />
-                <label for="female">Жіноча</label>
+                <Field name="gender" v-slot="{ field }">
+                  <input class="m-1" type="radio" id="male" value="Male" v-bind="field" />
+                  <label for="male">Чоловіча</label>
+                  <input class="m-1" type="radio" id="female" value="Female" v-bind="field" />
+                  <label for="female">Жіноча</label>
+                </Field>
               </div>
-              <select v-model="group" class="form-control mt-2" required>
-                <option value="">Оберіть вашу групу</option>
-                <option value="Ia31">ІА-31</option>
-                <option value="Ia32">ІА-32</option>
-                <option value="Ia33">ІА-33</option>
-                <option value="Ia34">ІА-34</option>
-              </select>
+
+              <Field name="group" v-slot="{ field, meta }">
+                <select v-bind="field" class="form-control mt-2">
+                  <option value="">Оберіть вашу групу</option>
+                  <option value="Ia31">ІА-31</option>
+                  <option value="Ia32">ІА-32</option>
+                  <option value="Ia33">ІА-33</option>
+                  <option value="Ia34">ІА-34</option>
+                </select>
+                <span v-if="meta.touched && meta.error" class="text-danger">{{ meta.error }}</span>
+              </Field>
+
               <button type="submit" class="btn btn-primary mt-3">Зареєструватись</button>
             </form>
           </transition>
@@ -56,10 +92,71 @@
 
 <script>
 import { MaskInput } from 'vue-3-mask';
-import API_URL from "../js/api.js";
+import BASE_URL from "../js/api.js";
+import { Field, useForm } from 'vee-validate';
+import * as Yup from 'yup';
+
 export default {
   components: {
     MaskInput,
+    Field,
+  },
+  setup() {
+    const { handleSubmit } = useForm({
+      validationSchema: Yup.object({
+        email: Yup.string().email('Будь ласка, введіть коректну електронну пошту.').required('Електронна пошта є обов\'язковою.'),
+        password: Yup.string().required('Пароль є обов\'язковим.'),
+        name: Yup.string().required('Ім\'я є обов\'язковим.'),
+        surname: Yup.string().required('Прізвище є обов\'язковим.'),
+        middlename: Yup.string().required('По-батькові є обов\'язковим.'),
+        birthdate: Yup.date().required('Дата народження є обов\'язковою.'),
+        number: Yup.string().required('Номер телефону є обов\'язковим.'),
+        gender: Yup.string().required('Виберіть стать.'),
+        group: Yup.string().required('Оберіть вашу групу.'),
+      }),
+    });
+
+    const handleRegister = handleSubmit(async (values) => {
+      console.log('Registering with values:', values);
+
+      const userData = {
+        email: values.email,
+        name: values.name,
+        password: values.password,
+        surname: values.surname,
+        middlename: values.middlename,
+        birthdate: values.birthdate,
+        gender: values.gender,
+        number: values.number,
+        group: values.group,
+      };
+
+      try {
+        const response = await fetch(`${BASE_URL}/newuser`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        });
+
+        if (!response.ok) {
+          alert('Упсі... Щось не так');
+          throw new Error('Failed to register user');
+        }
+
+        const result = await response.json();
+        console.log('User registered successfully:', result);
+        alert(`Вітаю ${values.name}. Ви успішно зареєстровані!`);
+      } catch (error) {
+        console.error('Error registering user:', error);
+        alert('Підніми базу... Розробник...');
+      }
+    });
+
+    return {
+      handleRegister,
+    };
   },
   data() {
     return {
@@ -75,7 +172,8 @@ export default {
       phone: '',
       group: '',
       registeredUsers: [],
-      selectedUsers: []
+      selectedUsers: [],
+      errors: {}
     };
   },
   methods: {
@@ -91,58 +189,9 @@ export default {
       this.birthdate = '';
       this.number = '';
       this.gender = '';
-      this.phone = '';
+      this.phone = '38()';
       this.group = '';
     },
-    async handleRegister() {
-      console.log({
-        email: this.email,
-        password: this.password,
-        name: this.name,
-        surname: this.surname,
-        middlename: this.middlename,
-        birthdate: this.birthdate,
-        gender: this.gender,
-        number: this.number,
-        group: this.group,
-      });
-
-      const userData = {
-        email: this.email,
-        name: this.name,
-        password: this.password,
-        surname: this.surname,
-        middlename: this.middlename,
-        birthdate: this.birthdate,
-        gender: this.gender,
-        number: this.number,
-        group: this.group
-      };
-
-      try {
-        const response = await fetch(`${API_URL}/newuser`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(userData)
-        });
-
-        if (!response.ok) {
-          alert('Упсі... Щось не так');
-          throw new Error('Failed to register user');
-        }
-
-        const result = await response.json();
-        console.log('User registered successfully:', result);
-        alert(`Вітаю ${this.name}. Ви успішно зареєстровані!`);
-      } catch (error) {
-        console.error('Error registering user:', error);
-        alert('Підніми базу... Розробник...');
-      }
-
-      this.resetForm();
-    },
-  }
+  },
 }
 </script>

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000";
+const BASE_URL = "http://0.0.0.0:8000";
 
 const apiClient = axios.create({
-  baseURL: API_URL,
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -19,4 +19,4 @@ export const fetchUsers = async () => {
   }
 };
 
-export default API_URL;
+export default BASE_URL;
