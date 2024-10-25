@@ -15,7 +15,7 @@ class UserCreate(BaseModel):
     middlename: str
     birthdate: date
     gender: Gender
-    number: int
+    number: str
     group: Group
 
 

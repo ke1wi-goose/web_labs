@@ -4,6 +4,7 @@ from app.database.models.user import User
 from app.database.schemas.user import UserCreate
 from app.database.engine import Database_API
 from typing import Never
+from app.utils.adjust.number import number_adjustment
 
 
 async def get_user_by_id(user_id: UUID) -> User | None:
@@ -33,7 +34,7 @@ async def create_user(user_schema: UserCreate) -> User:
             middlename=user_schema.middlename,
             birthdate=user_schema.birthdate,
             gender=user_schema.gender,
-            number=user_schema.number,
+            number=(await number_adjustment(user_schema.number)),
             group=user_schema.group,
         )
         async_session.add(db_user)
