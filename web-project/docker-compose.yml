@@ -5,9 +5,9 @@ services:
     image: postgres:14
     container_name: database
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: goose
+      POSTGRES_PASSWORD: goosethebest
+      POSTGRES_DB: web-project
     networks:
       - app-networks
     volumes:

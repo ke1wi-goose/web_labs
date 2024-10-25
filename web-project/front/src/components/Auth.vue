@@ -56,6 +56,7 @@
 
 <script>
 import { MaskInput } from 'vue-3-mask';
+import API_URL from "../js/api.js";
 export default {
   components: {
     MaskInput,
@@ -119,7 +120,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://0.0.0.0:8000/newuser', {
+        const response = await fetch(`${API_URL}/newuser`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
